@@ -11,7 +11,9 @@ yarn add react-navigation-props-helper 或 npm install --save react-navigation-p
 ### NavigatorPush
 
 1、跳转路由：NavigatorPush.navigate('TestPage', {userName:'userName', pwd:'pwd'}); //跳转路由
-2、回退路由：
+
+2、回退路由：NavigatorPush.goBack();
+
 3、设置参数：NavigatorPush.setParameters({test:{key:'value'}}); //当前路由设置参数
 
 ```javascript
