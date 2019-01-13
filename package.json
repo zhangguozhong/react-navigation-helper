@@ -1,7 +1,7 @@
 {
-  "name": "react-navigation-operation-helper",
-  "version": "1.0.0",
-  "description": "react-navigation帮助工具类。",
+  "name": "react-navigator-helper",
+  "version": "1.0.1",
+  "description": "用于简化react-navigation的props属性获取以及组件切换操作。",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
