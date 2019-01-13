@@ -1,10 +1,13 @@
 {
-  "name": "react-navigator-helper",
-  "version": "1.0.1",
+  "name": "react-navigation-helper-tool",
+  "version": "1.0.2",
   "description": "用于简化react-navigation的props属性获取以及组件切换操作。",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "hoist-non-react-statics": "^3.2.1"
   },
   "repository": {
     "type": "git",
