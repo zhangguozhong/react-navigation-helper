@@ -1,20 +1,21 @@
 # react-navigation-helper
 
 
+## 安装
+
+yarn add react-navigation-helper 或 npm install --save react-navigation-helper
+
+
 ## 怎么使用？
 
 ```javascript
 
+RootView
+
 import { NavigatorPush } from 'react-navigation-helper'
+<RootView ref={navigatorRef => { NavigatorPush.setTopLevelNavigator(navigatorRef); }}/>  //保存navigator的引用
+NavigatorPush.navigate('TestPage', {userName:'userName', pwd:'pwd'}); //跳转路由
 
-1、 <RootView ref={navigatorRef => { NavigatorPush.setTopLevelNavigator(navigatorRef); }}/>  //保存navigator的引用
-
-2、 NavigatorPush.navigate('TestPage', {userName:'userName', pwd:'pwd'}); //跳转路由
-
-```
-
-
-```javascript
 
 TestPage
 
