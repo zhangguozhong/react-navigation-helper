@@ -3,34 +3,30 @@
 
 ## 安装
 
-yarn add react-navigator-helper 或 npm install --save react-navigator-helper
+yarn add react-navigation-helper-tool 或 npm install --save react-navigation-helper-tool
 
 
 ## 怎么使用？
 
 ```javascript
-
 RootView
-
-import { NavigatorPush } from 'react-navigator-helper'
+import { NavigatorPush } from 'react-navigation-helper-tool'
 <RootView ref={navigatorRef => { NavigatorPush.setTopLevelNavigator(navigatorRef); }}/>  //保存navigator的引用
 NavigatorPush.navigate('TestPage', {userName:'userName', pwd:'pwd'}); //跳转路由
 
 
-TestPage
 
+TestPage
 import React,{Component} from 'react';
 import {
     View,StatusBar
 } from 'react-native';
 import {observer} from 'mobx-react';
-
-import { NavigatorPush,withMappedNavigationProps,withMappedNavigationAndConfigProps } from 'react-navigator-helper'
+import { NavigatorPush,withMappedNavigationProps,withMappedNavigationAndConfigProps } from 'react-navigation-helper-tool'
 
 @withMappedNavigationProps
 @observer
 export default class TestPage extends Component {
-
     componentDidMount() {
         NavigatorPush.setParameters({test:{key:'value'}}); //当前路由设置参数
         console.log('componentDidMount');
@@ -47,7 +43,6 @@ export default class TestPage extends Component {
         );
     }
 }
-
 ```
 
 
