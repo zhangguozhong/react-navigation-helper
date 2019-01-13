@@ -3,7 +3,7 @@
 
 ## 安装
 
-yarn add react-navigation-helper 或 npm install --save react-navigation-helper
+yarn add react-navigator-helper 或 npm install --save react-navigator-helper
 
 
 ## 怎么使用？
@@ -12,7 +12,7 @@ yarn add react-navigation-helper 或 npm install --save react-navigation-helper
 
 RootView
 
-import { NavigatorPush } from 'react-navigation-helper'
+import { NavigatorPush } from 'react-navigator-helper'
 <RootView ref={navigatorRef => { NavigatorPush.setTopLevelNavigator(navigatorRef); }}/>  //保存navigator的引用
 NavigatorPush.navigate('TestPage', {userName:'userName', pwd:'pwd'}); //跳转路由
 
@@ -25,7 +25,7 @@ import {
 } from 'react-native';
 import {observer} from 'mobx-react';
 
-import { NavigatorPush,withMappedNavigationProps,withMappedNavigationAndConfigProps } from 'react-navigation-helper'
+import { NavigatorPush,withMappedNavigationProps,withMappedNavigationAndConfigProps } from 'react-navigator-helper'
 
 @withMappedNavigationProps
 @observer
