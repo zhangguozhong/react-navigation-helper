@@ -56,13 +56,26 @@ function goBack() {
  * @param params
  */
 function setParameters(params) {
-    const {state:{nav:{ index,routes }}} = _navigator;
+    const {state:{ nav }} = _navigator;
+
+    let route = getRoute(nav);
     _navigator.dispatch(
         setParams({
-            key:routes[index].key,
+            key:route.key,
             params
         })
     );
+}
+
+function getRoute(route) {
+    //解析出当前的路由
+    const { index,routes } = route;
+    const nextRoute = routes[index];
+
+    if (nextRoute.hasOwnProperty('routes')) {
+        return getRoute(nextRoute);
+    }
+    return nextRoute;
 }
 
 export default {
