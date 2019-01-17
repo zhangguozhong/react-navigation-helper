@@ -1,6 +1,6 @@
 {
   "name": "react-navigation-props-helper",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "用于简化react-navigation的props属性获取以及组件切换操作。",
   "main": "index.js",
   "scripts": {

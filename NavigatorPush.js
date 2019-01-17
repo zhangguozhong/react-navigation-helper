@@ -56,8 +56,11 @@ function goBack() {
  * @param params
  */
 function setParameters(params) {
-    const {state:{ nav }} = _navigator;
+    if (!_navigator) {
+        return;
+    }
 
+    const { state:{ nav } } = _navigator;
     let route = getRoute(nav);
     _navigator.dispatch(
         setParams({
