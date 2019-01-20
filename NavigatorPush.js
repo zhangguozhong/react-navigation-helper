@@ -71,14 +71,13 @@ function setParameters(params) {
 }
 
 function getRoute(route) {
-    //解析出当前的路由
     const { index,routes } = route;
-    const nextRoute = routes[index];
-
-    if (nextRoute.hasOwnProperty('routes')) {
-        return getRoute(nextRoute);
+    if (!routes) {
+        return route;
     }
-    return nextRoute;
+
+    const subRoute = routes[index];
+    return getRoute(subRoute);
 }
 
 export default {
