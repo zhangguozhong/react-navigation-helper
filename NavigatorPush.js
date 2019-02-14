@@ -1,6 +1,7 @@
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions,StackActions } from 'react-navigation';
 const { BACK,NAVIGATE,setParams } = NavigationActions;
 let _navigator, _routers;
+const flushQueue = [];
 
 /**
  * 设置顶层路由导航
@@ -8,6 +9,12 @@ let _navigator, _routers;
  */
 function setTopLevelNavigator(navigatorRef) {
     _navigator = navigatorRef;
+    if (_navigator && flushQueue.length > 0) {
+        for (let params of flushQueue) {
+            setParameters(params);
+            flushQueue.remove(params);
+        }
+    }
 }
 
 
@@ -39,7 +46,7 @@ function navigate(routeName, params) {
  * 返回到顶层
  */
 function popToTop() {
-    _navigator.dispatch(NavigationActions.popToTop());
+    _navigator.dispatch(StackActions.popToTop());
 }
 
 
@@ -50,6 +57,25 @@ function goBack() {
     _navigator.dispatch(NavigationActions.back({type: BACK}));
 }
 
+/**
+ * 重置路由
+ * @param index
+ * @param routeNames
+ */
+function resetRoute(index,routeNames) {
+    if (!routeNames || routeNames.length === 0 || index > (routeNames.length - 1)) {
+        return;
+    }
+
+    let routeActions = routeNames.map((route) => {
+        return NavigationActions.navigate(route);
+    });
+    _navigator.dispatch(StackActions.reset({
+        index:index,
+        actions:routeActions
+    }));
+}
+
 
 /**
  * 当前路由设置参数
@@ -57,6 +83,7 @@ function goBack() {
  */
 function setParameters(params) {
     if (!_navigator) {
+        flushQueue.push(params);
         return;
     }
 
@@ -86,5 +113,6 @@ export default {
     navigate,
     goBack,
     popToTop,
-    setParameters
+    setParameters,
+    resetRoute
 };
