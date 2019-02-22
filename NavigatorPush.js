@@ -107,6 +107,35 @@ function getRoute(route) {
     return getRoute(subRoute);
 }
 
+
+/**
+ * 重置指定路由 NavigatorPush.resetTargetRoute('LoginInitPage',[{ routeName:'VerifyCodeLoginPage' }]);
+ * @param targetRouteName 路由对象名
+ * @param routeNames 指定路由对象{ routeName:'',params:{} }
+ */
+function resetTargetRoute(targetRouteName,routeNames) {
+    if (!_navigator) {
+        return;
+    }
+    const { state:{nav:{ routes }} } = _navigator;
+    const targetIndex = routes.findIndex(item => item.routeName === targetRouteName);
+    if (targetIndex > 0) {
+        let targetRoutes = routes.filter((item,index) => index <= targetIndex);
+
+        if (targetRoutes && targetRoutes.length > 0) {
+            const finalTargetRoutes = targetRoutes.concat(routeNames);
+            let routeActions = finalTargetRoutes.map((route) => {
+                return NavigationActions.navigate(route);
+            });
+
+            _navigator.dispatch(StackActions.reset({
+                index:routeActions.length - 1,
+                actions:routeActions
+            }));
+        }
+    }
+}
+
 export default {
     setTopLevelNavigator,
     setRouters,
@@ -114,5 +143,6 @@ export default {
     goBack,
     popToTop,
     setParameters,
-    resetRoute
+    resetRoute,
+    resetTargetRoute
 };
