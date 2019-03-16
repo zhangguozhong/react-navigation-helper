@@ -6,9 +6,9 @@ const withMappedNavigationProps = WrappedComponent => {
     const TargetComponent = props => {
         const params = props.navigation ? props.navigation.state.params : {};
         const { routeName } = props.navigation.state;
-        const { screenProps,propsExceptScreenProps } = props;
+        const { screenProps,propsExceptScreenProps,navigation } = props;
 
-        return <WrappedComponent {...screenProps} {...propsExceptScreenProps} {...params} pageName={routeName}/>;
+        return <WrappedComponent {...screenProps} {...propsExceptScreenProps} {...params} pageName={routeName} navigation={navigation}/>;
     };
 
     TargetComponent.displayName = `withMappedNavigationProps(${WrappedComponent.displayName ||
