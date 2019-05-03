@@ -36,7 +36,7 @@ const NavigatorPush = {
 
 
     popToTop:function (params = initParams) {
-        _navigator.dispatch(StackActions.popToTop());
+        _navigator.dispatch(StackActions.popToTop(params));
     },
     popN:function (n,params = initParams) {
         _navigator.dispatch(StackActions.pop({ n,params }));
