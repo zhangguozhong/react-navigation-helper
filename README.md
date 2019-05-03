@@ -61,6 +61,26 @@ export default class TestPage extends Component {
 }
 ```
 
+### routeInterceptor
+
+拦截路由，比如某些页面需要登录才可以访问
+
+```javascript
+NavigatorPush.routeInterceptor = (routeName, params) => {
+
+    if (needLoginPage.indexOf(routeName) !== -1) {
+
+        NavigatorPush.navigate('TestPage1',params);
+
+        return false;
+    }
+
+    console.log('routeName',routeName);
+    return true;
+};
+
+```
+
 
 ## 说明须知
 
